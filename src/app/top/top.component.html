@@ -1,0 +1,15 @@
+<div class='task-wrapper'>
+  <h3>One task component follows</h3>
+  <table>
+    <tr>
+      <td><button (click)="alpha()">alpha</button></td>
+      <td><button (click)="beta()">beta</button></td>
+      <td><button (click)="gamma()">gamma</button></td>
+      <td><button (click)="theta()">theta</button></td>
+    </tr>
+  </table>
+  <ng-template app-task></ng-template>
+</div>
+<div>
+  <button (click)="submitChild()">TELL CHILD TO SUBMIT</button>
+</div>

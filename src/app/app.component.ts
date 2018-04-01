@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Type} from '@angular/core';
+import {ComponentDirectoryService} from "./component-directory/component-directory.service";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+
+  public names: string[] = ['alpha', 'beta', 'gamma', 'theta'];
+  constructor(private directory: ComponentDirectoryService ) {
+  }
+
+  public getC(name: string): Type<any> {
+    return this.directory.componentByModuleAndName('p1', name);
+  }
 }
