@@ -6,20 +6,22 @@ import {ComponentDirectoryModule} from "../component-directory/component-directo
 
 const MODULE_NAME = 'p2';
 
-const ENTRIES = [
+const entries = [
   {moduleName: MODULE_NAME, componentName: 'gamma', component: GammaComponent},
   {moduleName: MODULE_NAME, componentName: 'theta', component: ThetaComponent}
-]
+];
+
+const components = [GammaComponent, ThetaComponent];
 
 @NgModule({
   imports: [
     CommonModule,
-    ComponentDirectoryModule.forChild(ENTRIES)
+    ComponentDirectoryModule.forChild(entries)
   ],
-  declarations: [ENTRIES.map(e => e.component)],
+  declarations: components,
   providers: [
     // reuse entries instead of re-declaring entryComponents
-    {provide: ANALYZE_FOR_ENTRY_COMPONENTS, useValue: ENTRIES, multi: true}
+    {provide: ANALYZE_FOR_ENTRY_COMPONENTS, useValue: entries, multi: true}
   ]
 })
 export class P2Module { }

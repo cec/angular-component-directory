@@ -37,7 +37,6 @@ export class ComponentDirectoryModule {
     return {ngModule: ComponentDirectoryModule, providers: [provideComponentEntries(entries)]};
   }
 
-
 }
 
 

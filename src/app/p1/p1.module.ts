@@ -6,22 +6,24 @@ import {ComponentDirectoryModule} from "../component-directory/component-directo
 
 const MODULE_NAME = 'p1';
 
-const ENTRIES = [
+const entries = [
   {moduleName: MODULE_NAME, componentName: 'alpha', component: AlphaComponent},
   {moduleName: MODULE_NAME, componentName: 'beta', component: BetaComponent}
-]
+];
+
+const components = [AlphaComponent, BetaComponent];
 
 @NgModule({
   imports: [
     CommonModule,
-    ComponentDirectoryModule.forChild(ENTRIES)
+    ComponentDirectoryModule.forChild(entries)
   ],
-  declarations: [ENTRIES.map(e => e.component)],
+  declarations: components,
   // entryComponents: [ENTRIES.map(e => e.component)],
   // exports: [AlphaComponent]
   providers: [
     // reuse entries instead of re-declaring entryComponents
-    {provide: ANALYZE_FOR_ENTRY_COMPONENTS, useValue: ENTRIES, multi: true}
+    {provide: ANALYZE_FOR_ENTRY_COMPONENTS, useValue: entries, multi: true}
   ]
 })
 export class P1Module {
