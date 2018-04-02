@@ -12,7 +12,6 @@ export class AlphaComponent implements OnInit, TaskComponent {
   constructor() { }
 
   ngOnInit() {
-    console.log((<any>AlphaComponent).__annotations__[0]);
   }
 
   submit() {

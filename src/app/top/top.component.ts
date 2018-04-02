@@ -14,8 +14,11 @@ export class TopComponent implements OnInit {
   @ViewChild(TaskDirective) task: TaskDirective;
   private componentRef: ComponentRef<TaskComponent>;
 
+  vars: any;
+
   constructor(private componentDirectory: ComponentDirectoryService,
               private factoryResolver: ComponentFactoryResolver) {
+    this.vars = {a: 'ciao', b: 'X-zibit'};
   }
 
   ngOnInit() {

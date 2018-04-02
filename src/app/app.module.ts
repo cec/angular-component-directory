@@ -8,6 +8,7 @@ import {P2Module} from "./p2/p2.module";
 import {ComponentDirectoryModule} from "./component-directory/component-directory.module";
 import {TopComponent} from './top/top.component';
 import { TaskDirective } from './task.directive';
+import { BottomComponent } from './bottom/bottom.component';
 
 const ENTRIES = [];
 
@@ -15,7 +16,8 @@ const ENTRIES = [];
   declarations: [
     AppComponent,
     TopComponent,
-    TaskDirective
+    TaskDirective,
+    BottomComponent
   ],
   imports: [
     BrowserModule,

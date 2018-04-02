@@ -4,10 +4,8 @@ import {ComponentDirectoryEntry} from "./component-directory-entry";
 @Injectable()
 export class ComponentDirectoryService {
 
-  private entries: ComponentDirectoryEntry[];
 
-  constructor(config: ComponentDirectoryEntry[]) {
-    this.entries = config;
+  constructor(private entries: ComponentDirectoryEntry[]) {
   }
 
   public componentByModuleAndName(moduleName: string, componentName: string): Type<any> {

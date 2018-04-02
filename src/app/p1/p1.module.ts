@@ -16,7 +16,9 @@ const components = [AlphaComponent, BetaComponent];
 @NgModule({
   imports: [
     CommonModule,
+   // ComponentDirectoryModule.smartForChild('p1', components)
     ComponentDirectoryModule.forChild(entries)
+
   ],
   declarations: components,
   // entryComponents: [ENTRIES.map(e => e.component)],
