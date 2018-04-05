@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {TaskComponent} from "../../task-component";
+import {Component, OnInit} from '@angular/core';
+import {TaskComponent} from '../../task-component';
 
 @Component({
   selector: 'app-alpha',
@@ -9,7 +9,12 @@ import {TaskComponent} from "../../task-component";
 export class AlphaComponent implements OnInit, TaskComponent {
   variables: any;
 
-  constructor() { }
+  static cn() {
+    return 'alpha';
+  }
+
+  constructor() {
+  }
 
   ngOnInit() {
   }

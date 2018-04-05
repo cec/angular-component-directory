@@ -7,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BetaComponent implements OnInit {
 
+  static cn() {
+    return 'beta';
+  }
+
   constructor() { }
 
   ngOnInit() {

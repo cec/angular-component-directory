@@ -6,19 +6,23 @@ import {ComponentDirectoryModule} from '../component-directory/component-directo
 
 const MODULE_NAME = 'p1';
 
-const entries = [
-  {moduleName: MODULE_NAME, componentName: 'alpha', component: AlphaComponent},
-  {moduleName: MODULE_NAME, componentName: 'beta', component: BetaComponent}
-];
+// const entries = [
+//   {moduleName: MODULE_NAME, componentName: 'alpha', component: AlphaComponent},
+//   {moduleName: MODULE_NAME, componentName: 'beta', component: BetaComponent}
+// ];
 
 const components = [AlphaComponent, BetaComponent];
+
+// const entries = better('p1', components);
+
+const entries = components.map(c => {
+  return {moduleName: MODULE_NAME, componentName: c.cn(), component: c};
+});
 
 @NgModule({
   imports: [
     CommonModule,
-   // ComponentDirectoryModule.smartForChild('p1', components)
     ComponentDirectoryModule.forChild(entries)
-
   ],
   declarations: components,
   // entryComponents: [ENTRIES.map(e => e.component)],
@@ -29,4 +33,12 @@ const components = [AlphaComponent, BetaComponent];
   ]
 })
 export class P1Module {
+}
+
+export function better(m: string, comps: any[]) {
+  const res = comps.map(c => {
+    return {moduleName: m, componentName: c.cn(), component: c};
+  });
+  console.log(res);
+  return res;
 }

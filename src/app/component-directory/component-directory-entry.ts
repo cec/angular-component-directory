@@ -1,7 +1,6 @@
-import {Component, Type} from "@angular/core";
+import {Type} from '@angular/core';
 
 export class ComponentDirectoryEntry {
   moduleName: string;
-  componentName: string;
-  component: Type<any>;
+  components: Type<any>[];
 }
