@@ -1,8 +1,8 @@
 import {InjectionToken, ModuleWithProviders, NgModule, Type} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {ComponentDirectoryService} from "./component-directory.service";
-import {ComponentDirectoryEntry} from "./component-directory-entry";
-import {TaskComponent} from "../task-component";
+import {ComponentDirectoryService} from './component-directory.service';
+import {ComponentDirectoryEntry} from './component-directory-entry';
+import {TaskComponent} from '../task-component';
 
 
 export const DIRECTORY_ENTRIES = new InjectionToken<ComponentDirectoryEntry[][]>('DIRECTORY_ENTRIES');
@@ -52,7 +52,7 @@ export function provideComponentEntries(entries: Entries): any {
 
 
 export function setupDirectory(config: ComponentDirectoryEntry[][]): ComponentDirectoryService {
-  return new ComponentDirectoryService(flatten(config));
+  return new ComponentDirectoryService(config);
 }
 
 export function smartProvideComponentEntries(moduleName: string, components: Type<any>[]) {
@@ -62,12 +62,9 @@ export function smartProvideComponentEntries(moduleName: string, components: Typ
       moduleName: moduleName,
       componentName: c.name,
       component: c
-  }
+    };
   });
   return provideComponentEntries(entries);
 }
 
 
-export function flatten<T>(arr: T[][]): T[] {
-  return Array.prototype.concat.apply([], arr);
-}

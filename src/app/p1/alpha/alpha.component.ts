@@ -15,7 +15,7 @@ export class AlphaComponent implements OnInit, TaskComponent {
   }
 
   submit() {
-    console.log('Submitting Alpha')
+    console.log('Submitting Alpha');
   }
 
 
