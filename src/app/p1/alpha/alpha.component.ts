@@ -1,23 +1,24 @@
-import {Component, OnInit} from '@angular/core';
-import {TaskComponent} from '../../task-component';
+import { Component, OnInit } from '@angular/core';
+import {AbstractTaskComponent} from '../../abstract-task/abstract-task.component';
 
 @Component({
   selector: 'app-alpha',
   templateUrl: './alpha.component.html',
   styleUrls: ['./alpha.component.css']
 })
-export class AlphaComponent implements OnInit, TaskComponent {
-  variables: any;
+export class AlphaComponent extends AbstractTaskComponent {
 
-  static cn() {
+  constructor() {
+    super();
+  }
+
+  static resolutionId(): string {
     return 'alpha';
   }
 
-  constructor() {
-  }
-
-  ngOnInit() {
-  }
+  // ngOnInit() {
+  //   super.ngOnInit();
+  // }
 
   submit() {
     console.log('Submitting Alpha');

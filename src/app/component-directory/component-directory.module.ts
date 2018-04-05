@@ -45,9 +45,9 @@ export class ComponentDirectoryModule {
     return {ngModule: ComponentDirectoryModule, providers: [provideComponentEntries(entries)]};
   }
 
-  static smartForChild(moduleName: string, components: Type<any>[]): ModuleWithProviders {
-    return {ngModule: ComponentDirectoryModule, providers: [smartProvideComponentEntries(moduleName, components)]};
-  }
+  // static smartForChild(moduleName: string, components: Type<any>[]): ModuleWithProviders {
+  //   return {ngModule: ComponentDirectoryModule, providers: [smartProvideComponentEntries(moduleName, components)]};
+  // }
 }
 
 

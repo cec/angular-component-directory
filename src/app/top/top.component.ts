@@ -2,6 +2,7 @@ import {Component, ComponentFactoryResolver, ComponentRef, OnInit, ViewChild} fr
 import {ComponentDirectoryService} from "../component-directory/component-directory.service";
 import {TaskDirective} from "../task.directive";
 import {TaskComponent} from "../task-component";
+import {AbstractTaskComponent} from '../abstract-task/abstract-task.component';
 
 @Component({
   selector: 'app-top',
@@ -12,7 +13,7 @@ export class TopComponent implements OnInit {
 
 
   @ViewChild(TaskDirective) task: TaskDirective;
-  private componentRef: ComponentRef<TaskComponent>;
+  private componentRef: ComponentRef<AbstractTaskComponent>;
 
   vars: any;
 
@@ -25,13 +26,13 @@ export class TopComponent implements OnInit {
   }
 
   private componentForTask(process: string, taskName: string) {
-    let factory = this.factoryResolver.resolveComponentFactory(
+    const factory = this.factoryResolver.resolveComponentFactory(
       this.componentDirectory.componentByModuleAndName(process, taskName)
     );
-    let viewContainerRef = this.task.viewContainerRef;
+    const viewContainerRef = this.task.viewContainerRef;
     viewContainerRef.clear();
     this.componentRef = viewContainerRef.createComponent(factory);
-    (<TaskComponent> this.componentRef.instance).variables = {message: "I am "};
+    (<AbstractTaskComponent> this.componentRef.instance).variables = {message: 'I am '};
   }
 
 

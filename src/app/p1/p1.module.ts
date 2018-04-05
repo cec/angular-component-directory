@@ -16,7 +16,7 @@ const components = [AlphaComponent, BetaComponent];
 // const entries = better('p1', components);
 
 const entries = components.map(c => {
-  return {moduleName: MODULE_NAME, componentName: c.cn(), component: c};
+  return {moduleName: MODULE_NAME, components: c};
 });
 
 @NgModule({

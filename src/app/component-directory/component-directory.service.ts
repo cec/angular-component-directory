@@ -1,5 +1,6 @@
 import {Inject, Injectable, Type} from '@angular/core';
 import {ComponentDirectoryEntry} from './component-directory-entry';
+import {AbstractTaskComponent} from '../abstract-task/abstract-task.component';
 
 @Injectable()
 export class ComponentDirectoryService {
@@ -10,9 +11,9 @@ export class ComponentDirectoryService {
     this.nullEntry = {moduleName: '0', components: [] };
   }
 
-  public componentByModuleAndName(moduleName: string, componentName: string): Type<any> {
+  public componentByModuleAndName(moduleName: string, componentName: string): Type<AbstractTaskComponent> {
     const entryForModule = this.entries.find(e => e.moduleName === moduleName) || this.nullEntry;
-    const match = entryForModule.components.find(c => c.cn() === componentName);
+    const match = entryForModule.components.find(c => c.resolutionId() === componentName);
 
     if (typeof match === 'undefined') {
       console.log(`cannot find component ${componentName} in module ${moduleName} ... dumping known components...`);
