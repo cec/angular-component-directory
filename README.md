@@ -1,4 +1,5 @@
-# Mody
+# Angular Component Directory
+A directory service to resolve components and load them dynamically.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
 
