@@ -6,11 +6,12 @@ import {ComponentDirectoryModule} from '../component-directory/component-directo
 import {ComponentDirectoryEntry} from '../component-directory/component-directory-entry';
 
 const COMPONENTS = [GammaComponent, ThetaComponent];
+const ENTRY = {moduleName: 'p2', components: COMPONENTS};
 
 @NgModule({
   imports: [
     CommonModule,
-    ComponentDirectoryModule.forChild(new ComponentDirectoryEntry('p2', COMPONENTS))
+    ComponentDirectoryModule.forChild(ENTRY)
   ],
   declarations: COMPONENTS,
   entryComponents: COMPONENTS

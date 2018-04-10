@@ -6,7 +6,7 @@ import {TaskComponent} from '../task-component';
 
 
 export const DIRECTORY_ENTRIES = new InjectionToken<ComponentDirectoryEntry[]>('DIRECTORY_ENTRIES');
-export type Entries = ComponentDirectoryEntry;
+export type Entries = ComponentDirectoryEntry[];
 
 @NgModule({
   imports: [CommonModule]
@@ -16,14 +16,14 @@ export class ComponentDirectoryModule {
   /**
    * Call in app_module
    *
-   * @param {Entries} entries
+   * @param {Entries} entry
    * @returns {ModuleWithProviders}
    */
-  static forRoot(entries: Entries): ModuleWithProviders {
+  static forRoot(entry: ComponentDirectoryEntry): ModuleWithProviders {
     return {
       ngModule: ComponentDirectoryModule,
       providers: [
-        provideComponentEntries(entries),
+        provideComponentEntries(entry),
         {
           provide: ComponentDirectoryService, useFactory: setupDirectory, deps: [DIRECTORY_ENTRIES]
         }
@@ -34,26 +34,15 @@ export class ComponentDirectoryModule {
   /**
    * Call in submodules so they can configure their entries
    */
-  static forChild(entries: Entries): ModuleWithProviders {
-    return {ngModule: ComponentDirectoryModule, providers: [provideComponentEntries(entries)]};
+  static forChild(entry: ComponentDirectoryEntry): ModuleWithProviders {
+    return {ngModule: ComponentDirectoryModule, providers: [provideComponentEntries(entry)]};
   }
 
-  /**
-   * Call in submodules so they can configure their entries
-   */
-  static forChildOld(entries: Entries): ModuleWithProviders {
-    return {ngModule: ComponentDirectoryModule, providers: [provideComponentEntries(entries)]};
-  }
-
-  // static smartForChild(moduleName: string, components: Type<any>[]): ModuleWithProviders {
-  //   return {ngModule: ComponentDirectoryModule, providers: [smartProvideComponentEntries(moduleName, components)]};
-  // }
 }
 
-
-export function provideComponentEntries(entries: Entries): any {
+export function provideComponentEntries(entry: ComponentDirectoryEntry): any {
   return [
-    {provide: DIRECTORY_ENTRIES, multi: true, useValue: entries}
+    {provide: DIRECTORY_ENTRIES, multi: true, useValue: entry}
   ];
 }
 
@@ -61,18 +50,3 @@ export function provideComponentEntries(entries: Entries): any {
 export function setupDirectory(config: ComponentDirectoryEntry[]): ComponentDirectoryService {
   return new ComponentDirectoryService(config);
 }
-
-/*
-export function smartProvideComponentEntries(moduleName: string, components: Type<any>[]) {
-  const entries: ComponentDirectoryEntry[] = components.map((c) => {
-    // console.log(c.name);
-    return {
-      moduleName: moduleName,
-      componentName: c.name,
-      component: c
-    };
-  });
-  return provideComponentEntries(entries);
-}
-*/
-

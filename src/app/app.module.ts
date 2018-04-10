@@ -8,21 +8,14 @@ import {P2Module} from './p2/p2.module';
 import {ComponentDirectoryModule} from './component-directory/component-directory.module';
 import {TopComponent} from './top/top.component';
 import { TaskDirective } from './task.directive';
-import { BottomComponent } from './bottom/bottom.component';
 import {AbstractTaskComponent} from './abstract-task/abstract-task.component';
-import {ComponentDirectoryEntry} from './component-directory/component-directory-entry';
 import {FormsModule} from '@angular/forms';
-
-// const ENTRIES = [];
-
-
 
 @NgModule({
   declarations: [
     AppComponent,
     TopComponent,
     TaskDirective,
-    BottomComponent,
     AbstractTaskComponent
   ],
   imports: [
@@ -30,7 +23,7 @@ import {FormsModule} from '@angular/forms';
     FormsModule,
     P1Module,
     P2Module,
-    ComponentDirectoryModule.forRoot(new ComponentDirectoryEntry('AppModule', []))
+    ComponentDirectoryModule.forRoot({moduleName: 'app', components: []})
   ],
   providers: [],
   bootstrap: [AppComponent]

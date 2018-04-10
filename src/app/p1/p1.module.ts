@@ -7,12 +7,13 @@ import {ComponentDirectoryEntry} from '../component-directory/component-director
 import {FormsModule} from '@angular/forms';
 
 const COMPONENTS = [AlphaComponent, BetaComponent];
+const ENTRY = {moduleName: 'p1', components: COMPONENTS};
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    ComponentDirectoryModule.forChild(new ComponentDirectoryEntry('p1', COMPONENTS))
+    ComponentDirectoryModule.forChild(ENTRY)
   ],
   declarations: COMPONENTS,
   entryComponents: COMPONENTS
