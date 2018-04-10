@@ -5,6 +5,7 @@ import {AbstractTaskComponent} from '../abstract-task/abstract-task.component';
 @Injectable()
 export class ComponentDirectoryService {
 
+  // TODO: consider if we can somehow use this as fallback or if we should throw an error
   private nullEntry: ComponentDirectoryEntry;
 
   constructor(@Inject('DIRECTORY_ENTRIES') private entries: ComponentDirectoryEntry[]) {
@@ -25,7 +26,4 @@ export class ComponentDirectoryService {
     }
   }
 
-  flatten<T>(arr: T[][]): T[] {
-    return Array.prototype.concat.apply([], arr);
-  }
 }

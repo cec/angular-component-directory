@@ -4,9 +4,8 @@ import {ComponentDirectoryService} from './component-directory.service';
 import {ComponentDirectoryEntry} from './component-directory-entry';
 import {TaskComponent} from '../task-component';
 
-
+// token to inject entries
 export const DIRECTORY_ENTRIES = new InjectionToken<ComponentDirectoryEntry[]>('DIRECTORY_ENTRIES');
-export type Entries = ComponentDirectoryEntry[];
 
 @NgModule({
   imports: [CommonModule]
@@ -14,10 +13,7 @@ export type Entries = ComponentDirectoryEntry[];
 export class ComponentDirectoryModule {
 
   /**
-   * Call in app_module
-   *
-   * @param {Entries} entry
-   * @returns {ModuleWithProviders}
+   * Call in AppModule
    */
   static forRoot(entry: ComponentDirectoryEntry): ModuleWithProviders {
     return {
