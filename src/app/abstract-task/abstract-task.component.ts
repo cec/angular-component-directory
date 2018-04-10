@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {TaskConnectorService} from '../task-connector.service';
 
 
 /*
@@ -9,12 +10,10 @@ import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angula
   templateUrl: './abstract-task.component.html',
   styleUrls: ['./abstract-task.component.scss']
 })
-export abstract class AbstractTaskComponent implements OnInit {
+export class AbstractTaskComponent implements OnInit {
 
   // from backend/variables
   @Input() public variables: any;
-
-  @Output() public formStatusChanged = new EventEmitter<string>();
 
   // ref to contained form
   @ViewChild('form') form;
@@ -26,8 +25,12 @@ export abstract class AbstractTaskComponent implements OnInit {
   constructor() {
   }
 
+  // constructor(private connector: TaskConnectorService) {
+  // }
+
   ngOnInit() {
-    this.observeFormStatus();
+    // this.observeFormStatus();
+    // this.observeConnectorRequests();
   }
 
   public submit() {
@@ -35,12 +38,18 @@ export abstract class AbstractTaskComponent implements OnInit {
   }
 
   private observeFormStatus() {
-    this.form.statusChanges.subscribe(status => {
-      const interestingStatuses = /^(VALID|INVALID)$/;
-      if (interestingStatuses.test(status)) {
-        this.formStatusChanged.emit(status);
-      }
-    });
+    // const interestingStatuses = /^(VALID|INVALID)$/;
+    // this.form.statusChanges.subscribe(status => {
+    //   if (interestingStatuses.test(status)) {
+    //     this.connector.publishValidationUpdate(status);
+    //   }
+    // });
   }
 
+  private observeConnectorRequests() {
+    // this.connector.variablesReuquests$.subscribe(r => {
+    //     return {a: 1, b: 2};
+    //   }
+    // );
+  }
 }

@@ -1,7 +1,12 @@
 import {AbstractTaskComponent} from '../abstract-task/abstract-task.component';
-import {Type} from '@angular/core';
 
 export class ComponentDirectoryEntry {
   moduleName: string;
-  components: Type<AbstractTaskComponent>[];
+  components: (typeof AbstractTaskComponent)[];
+
+  constructor(module: string, components: (typeof AbstractTaskComponent)[]) {
+    this.moduleName = module;
+    this.components = components;
+  }
+
 }

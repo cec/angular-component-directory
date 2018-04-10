@@ -11,7 +11,7 @@ export class ComponentDirectoryService {
     this.nullEntry = {moduleName: '0', components: [] };
   }
 
-  public componentByModuleAndName(moduleName: string, componentName: string): Type<AbstractTaskComponent> {
+  public componentByModuleAndName(moduleName: string, componentName: string): (typeof AbstractTaskComponent) {
     const entryForModule = this.entries.find(e => e.moduleName === moduleName) || this.nullEntry;
     const match = entryForModule.components.find(c => c.resolutionId() === componentName);
 

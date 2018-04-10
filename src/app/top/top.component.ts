@@ -1,4 +1,4 @@
-import {Component, ComponentFactoryResolver, ComponentRef, OnInit, ViewChild} from '@angular/core';
+import {Component, ComponentFactoryResolver, ComponentRef, OnInit, Type, ViewChild} from '@angular/core';
 import {ComponentDirectoryService} from "../component-directory/component-directory.service";
 import {TaskDirective} from "../task.directive";
 import {TaskComponent} from "../task-component";
@@ -26,8 +26,10 @@ export class TopComponent implements OnInit {
   }
 
   private componentForTask(process: string, taskName: string) {
+    const componentType = this.componentDirectory.componentByModuleAndName(process, taskName);
     const factory = this.factoryResolver.resolveComponentFactory(
-      this.componentDirectory.componentByModuleAndName(process, taskName)
+      // (Type<any> componentType)
+      componentType
     );
     const viewContainerRef = this.task.viewContainerRef;
     viewContainerRef.clear();

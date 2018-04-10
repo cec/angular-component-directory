@@ -10,8 +10,12 @@ import {TopComponent} from './top/top.component';
 import { TaskDirective } from './task.directive';
 import { BottomComponent } from './bottom/bottom.component';
 import {AbstractTaskComponent} from './abstract-task/abstract-task.component';
+import {ComponentDirectoryEntry} from './component-directory/component-directory-entry';
+import {FormsModule} from '@angular/forms';
 
-const ENTRIES = [];
+// const ENTRIES = [];
+
+
 
 @NgModule({
   declarations: [
@@ -23,9 +27,10 @@ const ENTRIES = [];
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     P1Module,
-    // P2Module,
-    ComponentDirectoryModule.forRoot(ENTRIES)
+    P2Module,
+    ComponentDirectoryModule.forRoot(new ComponentDirectoryEntry('AppModule', []))
   ],
   providers: [],
   bootstrap: [AppComponent]

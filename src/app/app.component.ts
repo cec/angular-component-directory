@@ -1,5 +1,6 @@
 import {Component, Type} from '@angular/core';
 import {ComponentDirectoryService} from "./component-directory/component-directory.service";
+import {AbstractTaskComponent} from './abstract-task/abstract-task.component';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,7 @@ export class AppComponent {
   constructor(private directory: ComponentDirectoryService ) {
   }
 
-  public getC(name: string): Type<any> {
+  public getC(name: string): (typeof AbstractTaskComponent) {
     return this.directory.componentByModuleAndName('p1', name);
   }
 }
